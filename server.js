@@ -126,6 +126,10 @@ app.post("/api/soat", async (req, res) => {
     return res.status(400).json({ error: "Número de documento requerido" });
   }
 
+  // Extender timeout de la request
+  req.setTimeout(90000); // 90 segundos
+  res.setTimeout(90000);
+
   // Resetear progreso
   currentProgress = {
     percentage: 0,
@@ -134,11 +138,20 @@ app.post("/api/soat", async (req, res) => {
   };
 
   try {
-    const data = await consultarSOAT(placa, tipoDocumento, numeroDocumento);
+    console.log(`[SOAT] Iniciando consulta para placa: ${placa}`);
+
+    const data = await Promise.race([
+      consultarSOAT(placa, tipoDocumento, numeroDocumento),
+      new Promise((_, reject) =>
+        setTimeout(() => reject(new Error('Timeout: La consulta tomó demasiado tiempo')), 80000)
+      )
+    ]);
+
     const parsedData = JSON.parse(data);
 
     // Verificar si hay error en la respuesta del scraper
     if (parsedData.error) {
+      console.error(`[SOAT] Error en scraper: ${parsedData.message}`);
       res.status(500).json({
         error: true,
         message: parsedData.message,
@@ -146,10 +159,14 @@ app.post("/api/soat", async (req, res) => {
       return;
     }
 
+    console.log(`[SOAT] Consulta exitosa para placa: ${placa}`);
     // Enviar respuesta JSON exitosa
     res.setHeader("Content-Type", "application/json; charset=utf-8");
     res.json(parsedData);
   } catch (error) {
+    console.error(`[SOAT] Error al consultar: ${error.message}`);
+    console.error(`[SOAT] Stack: ${error.stack}`);
+
     res.status(500).json({
       error: true,
       message: "Error al consultar el SOAT",

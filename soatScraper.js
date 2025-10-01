@@ -6,25 +6,35 @@ async function consultarSOAT(placa, tipoDocumento, numeroDocumento) {
     global.updateServerProgress(10, "Iniciando consulta...");
   }
 
-  const browser = await chromium.launch({
-    headless: true, // Cambiado a true para que sea invisible
-    args: [
-      "--no-sandbox",
-      "--disable-setuid-sandbox",
-      "--disable-dev-shm-usage",
-      "--disable-web-security",
-      "--disable-features=VizDisplayCompositor",
-      "--disable-blink-features=AutomationControlled",
-      "--disable-extensions",
-      "--disable-plugins",
-      "--disable-images",
-      "--disable-background-timer-throttling",
-      "--disable-backgrounding-occluded-windows",
-      "--disable-renderer-backgrounding",
-      "--disable-ipc-flooding-protection",
-      "--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-    ],
-  });
+  let browser;
+  try {
+    browser = await chromium.launch({
+      headless: true,
+      timeout: 30000,
+      args: [
+        "--no-sandbox",
+        "--disable-setuid-sandbox",
+        "--disable-dev-shm-usage",
+        "--disable-web-security",
+        "--disable-features=VizDisplayCompositor",
+        "--disable-blink-features=AutomationControlled",
+        "--disable-extensions",
+        "--disable-plugins",
+        "--disable-images",
+        "--disable-background-timer-throttling",
+        "--disable-backgrounding-occluded-windows",
+        "--disable-renderer-backgrounding",
+        "--disable-ipc-flooding-protection",
+        "--disable-gpu",
+        "--single-process",
+        "--no-zygote",
+        "--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+      ],
+    });
+  } catch (launchError) {
+    console.error("Error al lanzar el browser:", launchError);
+    throw new Error("No se pudo iniciar el navegador. Verifica la instalación de Playwright.");
+  }
   const page = await browser.newPage();
 
   // Actualizar progreso en el servidor
@@ -99,8 +109,8 @@ async function consultarSOAT(placa, tipoDocumento, numeroDocumento) {
       };
     });
 
-    page.setDefaultTimeout(60000);
-    page.setDefaultNavigationTimeout(60000);
+    page.setDefaultTimeout(45000);
+    page.setDefaultNavigationTimeout(45000);
 
     if (typeof global.updateServerProgress === "function") {
       global.updateServerProgress(30, "Recopilando datos.....");
@@ -1389,7 +1399,13 @@ async function consultarSOAT(placa, tipoDocumento, numeroDocumento) {
       resumen: {},
     });
   } finally {
-    await browser.close();
+    if (browser) {
+      try {
+        await browser.close();
+      } catch (closeError) {
+        console.error("Error al cerrar el browser:", closeError);
+      }
+    }
   }
 }
 

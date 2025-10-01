@@ -6,10 +6,11 @@
   "scripts": {
     "start": "node server.js",
     "dev": "node server.js",
-    "build": "echo 'Proyecto estático - no requiere build'",
+    "build": "npx playwright install --with-deps chromium",
     "test": "echo 'No hay tests configurados'",
     "test-telegram": "node test-telegram.js",
-    "test-flow": "node test-complete-flow.js"
+    "test-flow": "node test-complete-flow.js",
+    "postinstall": "npx playwright install --with-deps chromium"
   },
   "keywords": [
     "soat",
