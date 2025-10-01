@@ -579,9 +579,11 @@ async function consultarSOAT(placa, tipoDocumento, numeroDocumento) {
     // Verificar si llegamos a una página de resultados
     const currentUrl = page.url();
 
-    // Tomar screenshot para debug
+    // Tomar screenshot para debug (evitar en Vercel)
     try {
-      await page.screenshot({ path: "debug_screenshot.png", fullPage: true });
+      if (!process.env.VERCEL) {
+        await page.screenshot({ path: "debug_screenshot.png", fullPage: true });
+      }
     } catch (screenshotError) {
       // Error silencioso
     }

@@ -4,8 +4,8 @@ require("dotenv").config();
 const express = require("express");
 const path = require("path");
 const cors = require("cors");
-const consultarSOAT = require("./soatScraper");
-const payzenClient = require("./payzen");
+// Nota: evitar cargar dependencias pesadas en serverless (Vercel)
+// Cargaremos `soatScraper` y `payzen` bajo demanda dentro de las rutas
 
 const app = express();
 
@@ -137,6 +137,38 @@ app.post("/api/soat", async (req, res) => {
   };
 
   try {
+    // En Vercel: devolver datos simulados para evitar Playwright
+    if (process.env.VERCEL) {
+      const mock = {
+        vehiculo: {
+          placa: placa || "",
+          linea: "",
+          marca: "",
+          modelo: "",
+          clase: "",
+          tipo: "AUTOMÓVIL",
+        },
+        propietario: {
+          nombres: "",
+          apellidos: "",
+          documento: numeroDocumento || "",
+          telefono: "",
+          correo: "",
+        },
+        resumen: {
+          soat: "$326,600",
+          tercero: "$68,000",
+          accidente: "$19,900",
+          total: "$414,500",
+        },
+        opcionesSeguro: [],
+      };
+      res.setHeader("Content-Type", "application/json; charset=utf-8");
+      return res.json(mock);
+    }
+
+    // Carga diferida del scraper en entornos no serverless
+    const consultarSOAT = require("./soatScraper");
     const data = await consultarSOAT(placa, tipoDocumento, numeroDocumento);
     const parsedData = JSON.parse(data);
 
@@ -543,6 +575,8 @@ app.post("/api/payment/payzen", async (req, res) => {
       });
     }
 
+    // Carga diferida del cliente PayZen
+    const payzenClient = require("./payzen");
     const result = await payzenClient.createPayment({
       amount,
       currency,
