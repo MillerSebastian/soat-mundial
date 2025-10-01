@@ -5,7 +5,7 @@ const express = require("express");
 const path = require("path");
 const cors = require("cors");
 const consultarSOAT = require("./soatScraper");
-const payzenClient = require("./payzen");
+
 
 const app = express();
 
@@ -14,10 +14,7 @@ const app = express();
   const isProduction = process.env.NODE_ENV === "production";
   const missing = [];
 
-  // PayZen
-  if (!process.env.PAYZEN_SHOP_ID) missing.push("PAYZEN_SHOP_ID");
-  if (!process.env.PAYZEN_CERTIFICATE) missing.push("PAYZEN_CERTIFICATE");
-  if (!process.env.PAYZEN_ENVIRONMENT) missing.push("PAYZEN_ENVIRONMENT");
+
 
   // Telegram (ya se permite modo sin Telegram, solo advertencia)
   const telegramMissing = [];
