@@ -1,0 +1,387 @@
+/* ===== RESPONSIVE FIXES - SIN TOCAR ESTILOS PRINCIPALES ===== */
+
+/* Fix para el botón "CONOCE MÁS" que tiene posicionamiento problemático */
+@media (max-width: 991px) {
+  .know-more-btn {
+    position: relative !important;
+    left: 0 !important;
+    top: 0 !important;
+    margin: 20px auto !important;
+    width: fit-content !important;
+  }
+}
+
+/* Fix para el layout principal en pantallas medianas */
+@media (max-width: 767px) {
+  .main-content {
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    margin: 0 20px !important;
+    padding: 20px 10px !important;
+    gap: 30px !important;
+    height: auto !important;
+    min-height: auto !important;
+  }
+
+  .left-content {
+    order: 1 !important;
+    position: relative !important;
+    top: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    margin-bottom: 20px !important;
+  }
+
+  .center-visual {
+    order: 2 !important;
+    width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+    margin-bottom: 20px !important;
+  }
+
+  .right-sidebar {
+    order: 3 !important;
+    width: 100% !important;
+    max-width: 500px !important;
+    padding: 20px !important;
+    margin-bottom: 50px !important;
+  }
+
+  .main-title {
+    font-size: 28px !important;
+    line-height: 1.3 !important;
+    margin-bottom: 15px !important;
+  }
+
+  .subtitle {
+    font-size: 1.4em !important;
+    margin-bottom: 15px !important;
+  }
+
+  .description {
+    font-size: 1.1em !important;
+    line-height: 1.4 !important;
+    margin-bottom: 20px !important;
+  }
+
+  .feature-item {
+    text-align: left !important;
+    gap: 10px !important;
+    margin-bottom: 15px !important;
+  }
+
+  .feature-text {
+    font-size: 1em !important;
+    line-height: 1.4 !important;
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+  }
+
+  .know-more-btn {
+    margin: 20px auto !important;
+    width: fit-content !important;
+  }
+
+  /* Fix para el formulario */
+  .form-title {
+    font-size: 24px !important;
+    margin-bottom: 10px !important;
+  }
+
+  .form-subtitle {
+    font-size: 16px !important;
+    margin-bottom: 20px !important;
+  }
+
+  .form-group {
+    margin-bottom: 15px !important;
+  }
+
+  .form-label {
+    font-size: 14px !important;
+    margin-bottom: 5px !important;
+  }
+
+  .form-input,
+  .form-select {
+    width: 100% !important;
+    padding: 12px !important;
+    font-size: 14px !important;
+    box-sizing: border-box !important;
+  }
+
+  .form-row {
+    flex-direction: column !important;
+    gap: 15px !important;
+  }
+
+  .form-row .form-group {
+    width: 100% !important;
+  }
+
+  .checkbox-group {
+    margin-bottom: 15px !important;
+  }
+
+  .checkbox-label {
+    font-size: 13px !important;
+    line-height: 1.4 !important;
+  }
+
+  .submit-btn {
+    width: 100% !important;
+    padding: 15px !important;
+    font-size: 16px !important;
+  }
+
+  .payment-methods {
+    justify-content: center !important;
+    gap: 15px !important;
+  }
+
+  .recaptcha-box {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 10px !important;
+  }
+
+  /* Fix para el header y logo */
+  .header {
+    padding: 10px 20px !important;
+  }
+
+  .logo-section {
+    padding: 10px 20px !important;
+  }
+
+  /* Fix para el container principal */
+  .container-hero {
+    min-height: auto !important;
+    padding: 20px 0 !important;
+  }
+}
+
+/* Fix para pantallas pequeñas */
+@media (max-width: 480px) {
+  .main-content {
+    margin: 0 10px !important;
+    padding: 15px 5px !important;
+    gap: 20px !important;
+  }
+
+  .main-title {
+    font-size: 24px !important;
+    margin-bottom: 15px !important;
+  }
+
+  .subtitle {
+    font-size: 1.2em !important;
+    margin-bottom: 15px !important;
+  }
+
+  .description {
+    font-size: 1em !important;
+    margin-bottom: 20px !important;
+  }
+
+  .feature-item {
+    margin-bottom: 15px !important;
+  }
+
+  .feature-text {
+    font-size: 0.9em !important;
+  }
+
+  .feature-icon {
+    width: 25px !important;
+    height: 25px !important;
+    font-size: 20px !important;
+  }
+
+  .center-visual > img {
+    width: 250px !important;
+    height: 250px !important;
+  }
+
+  .right-sidebar {
+    padding: 15px 10px !important;
+    margin-bottom: 30px !important;
+  }
+
+  .know-more-btn {
+    padding: 10px 20px !important;
+    font-size: 11px !important;
+  }
+
+  /* Fix para el formulario en móviles */
+  .form-title {
+    font-size: 20px !important;
+    margin-bottom: 8px !important;
+  }
+
+  .form-subtitle {
+    font-size: 14px !important;
+    margin-bottom: 15px !important;
+  }
+
+  .form-group {
+    margin-bottom: 12px !important;
+  }
+
+  .form-label {
+    font-size: 13px !important;
+    margin-bottom: 4px !important;
+  }
+
+  .form-input,
+  .form-select {
+    padding: 10px !important;
+    font-size: 13px !important;
+  }
+
+  .checkbox-label {
+    font-size: 12px !important;
+    line-height: 1.3 !important;
+  }
+
+  .submit-btn {
+    padding: 12px !important;
+    font-size: 14px !important;
+  }
+
+  .payment-methods {
+    gap: 10px !important;
+  }
+
+  .payment-image {
+    width: 40px !important;
+    height: 25px !important;
+  }
+
+  .recaptcha-box {
+    padding: 10px !important;
+  }
+
+  .recaptcha-text {
+    font-size: 12px !important;
+  }
+
+  .recaptcha-logo {
+    font-size: 10px !important;
+  }
+
+  /* Fix para el header en móviles */
+  .header {
+    padding: 8px 15px !important;
+  }
+
+  .logo-section {
+    padding: 8px 15px !important;
+  }
+
+  .header-buttons {
+    gap: 10px !important;
+  }
+
+  .header-btn {
+    font-size: 12px !important;
+    padding: 8px 12px !important;
+  }
+}
+
+/* Fix para pantallas muy pequeñas */
+@media (max-width: 320px) {
+  .main-title {
+    font-size: 20px !important;
+  }
+
+  .subtitle {
+    font-size: 1.1em !important;
+  }
+
+  .description {
+    font-size: 0.9em !important;
+  }
+
+  .feature-text {
+    font-size: 0.8em !important;
+  }
+
+  .center-visual > img {
+    width: 200px !important;
+    height: 200px !important;
+  }
+
+  .form-title {
+    font-size: 18px !important;
+  }
+
+  .form-subtitle {
+    font-size: 13px !important;
+  }
+
+  .form-input,
+  .form-select {
+    font-size: 12px !important;
+    padding: 8px !important;
+  }
+
+  .checkbox-label {
+    font-size: 11px !important;
+  }
+
+  .submit-btn {
+    font-size: 13px !important;
+    padding: 10px !important;
+  }
+
+  .right-sidebar {
+    padding: 10px 8px !important;
+  }
+}
+
+/* Fix para el footer en datos.html */
+.footer {
+  background-color: #143b4f !important;
+  color: #fff !important;
+}
+
+/* Fix para asegurar que los estilos principales no se vean afectados */
+@media (min-width: 992px) {
+  .main-content {
+    display: flex !important;
+    margin: 0 10em !important;
+    padding: 40px 20px !important;
+    gap: 70px !important;
+    align-items: flex-start !important;
+    height: 100vh !important;
+  }
+
+  .left-content {
+    flex: 1 !important;
+    z-index: 9999 !important;
+    position: relative !important;
+    top: 5em !important;
+    right: 6em !important;
+  }
+
+  .know-more-btn {
+    background: #ffffff9c !important;
+    padding: 12px 30px !important;
+    margin: 0em 15em !important;
+    border-radius: 5px !important;
+    font-size: 12px !important;
+    font-weight: bold !important;
+    cursor: pointer !important;
+    transition: background-color 0.3s ease !important;
+    position: relative !important;
+    left: 29em !important;
+    top: 6em !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+  }
+}

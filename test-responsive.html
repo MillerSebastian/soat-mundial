@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Test Responsive</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+      }
+      .test-container {
+        max-width: 800px;
+        margin: 0 auto;
+        background: #f5f5f5;
+        padding: 20px;
+        border-radius: 10px;
+      }
+      .test-title {
+        color: #0088cc;
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      .test-info {
+        background: white;
+        padding: 15px;
+        border-radius: 8px;
+        margin-bottom: 15px;
+      }
+      .test-info h3 {
+        color: #333;
+        margin-top: 0;
+      }
+      .test-info p {
+        color: #666;
+        line-height: 1.5;
+      }
+      .responsive-test {
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        border: 2px solid #0088cc;
+      }
+      .responsive-test h3 {
+        color: #0088cc;
+        margin-top: 0;
+      }
+      .responsive-test ul {
+        color: #333;
+        line-height: 1.6;
+      }
+      .responsive-test li {
+        margin-bottom: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="test-container">
+      <h1 class="test-title">🧪 Test de Responsive Design</h1>
+
+      <div class="test-info">
+        <h3>📋 Información del Test</h3>
+        <p>
+          Este archivo te ayudará a verificar que las correcciones de responsive
+          design estén funcionando correctamente en <strong>index.html</strong>.
+        </p>
+      </div>
+
+      <div class="responsive-test">
+        <h3>📱 Cómo Probar el Responsive</h3>
+        <ul>
+          <li><strong>1. Abre index.html</strong> en tu navegador</li>
+          <li>
+            <strong>2. Abre las herramientas de desarrollador</strong> (F12)
+          </li>
+          <li>
+            <strong>3. Activa el modo responsive</strong> (icono de
+            móvil/tablet)
+          </li>
+          <li>
+            <strong>4. Prueba diferentes tamaños:</strong>
+            <ul>
+              <li>📱 Móvil: 375px - 480px</li>
+              <li>📱 Móvil Grande: 481px - 767px</li>
+              <li>📱 Tablet: 768px - 991px</li>
+              <li>💻 Desktop: 992px+</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+
+      <div class="test-info">
+        <h3>✅ Lo que Deberías Ver</h3>
+        <ul>
+          <li>
+            <strong>En móviles:</strong> Layout en columna, elementos centrados,
+            botón "CONOCE MÁS" reposicionado
+          </li>
+          <li>
+            <strong>En tablets:</strong> Layout reorganizado, elementos más
+            pequeños
+          </li>
+          <li><strong>En desktop:</strong> Layout original intacto</li>
+          <li>
+            <strong>Footer:</strong> Color azul (#143b4f) en todas las páginas
+          </li>
+        </ul>
+      </div>
+
+      <div class="responsive-test">
+        <h3>🔧 Archivos Modificados</h3>
+        <ul>
+          <li>
+            <strong>responsive-fixes.css</strong> - Nuevo archivo con
+            correcciones
+          </li>
+          <li>
+            <strong>index.html</strong> - Enlazado con responsive-fixes.css
+          </li>
+          <li>
+            <strong>datos.html</strong> - Enlazado con responsive-fixes.css
+          </li>
+          <li>
+            <strong>pago.html</strong> - Enlazado con responsive-fixes.css
+          </li>
+          <li><strong>datos.css</strong> - Agregado !important al footer</li>
+        </ul>
+      </div>
+
+      <div class="test-info">
+        <h3>🚨 Si Algo No Funciona</h3>
+        <ul>
+          <li>
+            Verifica que el archivo <strong>responsive-fixes.css</strong> esté
+            en la misma carpeta
+          </li>
+          <li>Limpia la caché del navegador (Ctrl+F5)</li>
+          <li>Verifica que no haya errores en la consola del navegador</li>
+          <li>
+            Asegúrate de que el archivo se esté cargando (pestaña Network en
+            DevTools)
+          </li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>

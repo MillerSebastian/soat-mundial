@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <!-- Favicon en múltiples formatos para compatibilidad -->
+    <link rel="icon" type="image/svg+xml" href="./imagenes/iconCarga.svg" />
+    <link rel="shortcut icon" href="./imagenes/iconCarga.svg" />
+    <link rel="apple-touch-icon" href="./imagenes/iconCarga.svg" />
+    <title>SOAT Mundial - Pack de Movilidad</title>
+  </head>
+
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="header-navbar">
+        <div>
+          <img src="./imagenes/navbarLogo.webp" alt="" class="logo1-responsive" />
+        </div>
+        <div class="header-buttons">
+          <a href="#" class="header-btn">
+            <i class="fa-regular fa-circle-question"></i> <p class="header-btn-text">Ayuda</p>
+          </a>
+          <a href="#" class="header-btn">
+            <i class="fa-regular fa-envelope"></i> <p class="header-btn-text">Contacto</p>
+          </a>
+        </div>
+      </div>
+      <!-- Logo Section -->
+      <div class="logo-section">
+        <img src="./imagenes/navbarLogo.webp" alt="" id="logo1" />
+        <img src="./imagenes/navbarLogo2.webp" alt="" id="logo2" />
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container-hero">
+      <section>
+        <div class="main-content">
+          <!-- Left Content -->
+          <div class="left-content">
+            <h1 class="main-title">¡Compra ya tu Pack de Movilidad Mundial!</h1>
+            <div class="subtitle">
+              SOAT + Accidentes Personales + <br />
+              Daños Materiales a Terceros
+            </div>
+            <p class="description">
+              Ahora podrás conducir sin preocupaciones con la <br />
+              triple cobertura que tienes diseñada para <br />
+              protegerte en caso de accidentes de tránsito.
+            </p>
+            <ul class="features">
+              <li class="feature-item">
+                <div class="feature-icon">
+                  <p>></p>
+                </div>
+                <div class="feature-text">
+                  Cubrimos rotura de vidrios laterales, películas de <br />
+                  seguridad, reposición de farolas delanteras y <br />
+                  stops traseros, rotura vidrio panorámico y llantas
+                  <br />estalladas.
+                </div>
+              </li>
+              <li class="feature-item">
+                <div class="feature-icon">
+                  <p>></p>
+                </div>
+                <div class="feature-text">
+                  Reparación de daños materiales a terceros, <br />
+                  asistencia jurídica y levantamiento digital de <br />
+                  información en el lugar del accidente.
+                </div>
+              </li>
+              <li class="feature-item">
+                <div class="feature-icon">
+                  <p>></p>
+                </div>
+                <div class="feature-text">
+                  Respaldo ante lesiones personales ocasionados <br />
+                  en un accidente de tránsito.
+                </div>
+              </li>
+            </ul>
+            <div class="know-more-btn">
+              <button onclick="scrollToBenefits()" class="know-more-button">
+                CONOCE MÁS
+              </button>
+              <i class="fa-solid fa-arrow-down"></i>
+            </div>
+          </div>
+          <!-- Center Visual -->
+          <div class="center-visual">
+            <img
+              src="./imagenes/heroIMG.webp"
+              alt=""
+              width="1755"
+              height="1608"
+              style="object-fit: cover; opacity: 1"
+            />
+          </div>
+          <!-- Right Sidebar -->
+          <div class="right-sidebar">
+            <h2 class="form-title">¡Empecemos!</h2>
+            <p class="form-subtitle">Ingresa la placa de tu nave</p>
+            <div class="progress-steps">
+              <div class="step active">
+                <div class="step-number">1</div>
+                <div class="step-label">Cotiza</div>
+              </div>
+              <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-label">Resumen</div>
+              </div>
+              <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-label">Pago</div>
+              </div>
+            </div>
+            <div class="progress-steps-2"></div>
+            <form id="formulario">
+              <div class="form-group">
+                <label class="form-label" for="placa">
+                  Placa
+                  <span class="info-icon">
+                    <i class="fas fa-info-circle"></i>
+                  </span>
+                </label>
+                <input
+                  type="text"
+                  id="placa"
+                  class="form-input"
+                  placeholder="Ingresa tu placa"
+                />
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="tipoDocumento" class="form-label">Tipo</label>
+                  <select id="tipoDocumento" class="form-select">
+                    <option value="">Selecciona el tipo</option>
+                    <option value="CC">Cédula de Ciudadanía</option>
+                    <option value="CE">Cédula de Extranjería</option>
+                    <option value="TI">Tarjeta de Identidad</option>
+                    <option value="PP">Pasaporte</option>
+                    <option value="NIT">NIT</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="numeroDocumento" class="form-label">
+                    Documento
+                    <span class="info-icon">
+                      <i class="fas fa-info-circle"></i>
+                    </span>
+                  </label>
+                  <input
+                    type="text"
+                    id="numeroDocumento"
+                    class="form-input"
+                    placeholder="Ingresar documento"
+                  />
+                </div>
+              </div>
+              <div class="checkbox-group">
+                <input type="checkbox" id="terms" />
+                <label for="terms" class="checkbox-label">
+                  Autorizo el tratamiento de mis datos y acepto la
+                  <a href="#" class="link"
+                    >Política de Tratamiento de Datos Personales</a
+                  >, así como los
+                  <a href="#" class="link">términos y condiciones</a>.
+                </label>
+              </div>
+              <div class="checkbox-group">
+                <input type="checkbox" id="communications" />
+                <label for="communications" class="checkbox-label">
+                  Acepto recibir comunicaciones comerciales y publicitarias
+                  personalizadas a través de los canales autorizados por Seguros
+                  Mundial
+                </label>
+              </div>
+              <div class="soat-question">
+                <strong>¿Quieres comprar solo tu SOAT?</strong>
+              </div>
+              <div class="payment-methods">
+                <div class="payment-logo-visa">
+                  <img
+                    src="./imagenes/master.webp"
+                    alt="Mastercard"
+                    class="payment-image"
+                  />
+                  <img
+                    src="./imagenes/visa.webp"
+                    alt="VISA"
+                    class="payment-image"
+                  />
+                </div>
+                <div class="payment-logo-payzen">
+                  <img
+                    src="./imagenes/payzen.webp"
+                    alt="PayZen"
+                    class="payment-image"
+                  />
+                </div>
+              </div>
+              <div class="recaptcha-container">
+                <div class="recaptcha-box">
+                  <input type="checkbox" id="recaptcha" />
+                  <label for="recaptcha" class="recaptcha-text"
+                    >No soy un robot</label
+                  >
+                  <div class="recaptcha-logo">
+                    <img
+                      src="./imagenes/captcha.png"
+                      alt="reCAPTCHA"
+                      class="recaptcha-image"
+                    />
+                    <span>reCAPTCHA</span>
+                    <div class="recaptcha-links">
+                      <a href="#" class="recaptcha-link">Privacidad</a>
+                      <span class="separator">-</span>
+                      <a href="#" class="recaptcha-link">Términos</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <button type="submit" class="submit-btn" id="btnConsultar">
+                Cotizar Pack de Movilidad
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+      <section class="container-benefits"></section>
+    </main>
+
+    <!-- Beneficios Section -->
+    <section class="beneficios-section" id="beneficios">
+      <div class="container">
+        <h2 class="beneficios-title">Beneficios Pack de Movilidad</h2>
+        <div class="beneficios-grid">
+          <div class="beneficio-card">
+            <div class="beneficio-illustration">
+              <img
+                src="./imagenes/beneficios-1.webp"
+                alt="Choque simple"
+                class="beneficio-image"
+              />
+            </div>
+            <p class="beneficio-text">
+              Acompañamiento en esos molestos choques simples.
+            </p>
+          </div>
+
+          <div class="beneficio-card">
+            <div class="beneficio-illustration">
+              <img
+                src="./imagenes/beneficios-2.webp"
+                alt="Asistencia completa"
+                class="beneficio-image"
+              />
+            </div>
+            <p class="beneficio-text">
+              Asistencia desde el reporte del siniestro, hasta la indemnización.
+            </p>
+          </div>
+
+          <div class="beneficio-card">
+            <div class="beneficio-illustration">
+              <img
+                src="./imagenes/beneficios-3.webp"
+                alt="Asesoría jurídica"
+                class="beneficio-image"
+              />
+            </div>
+            <p class="beneficio-text">
+              Asesoría jurídica en procesos judiciales.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Polizas Section -->
+    <section class="polizas-section">
+      <img
+        src="imagenes/fondoPoliza.png"
+        alt="Fondo Polizas"
+        class="fondo-poliza-img"
+      />
+      <div class="container">
+        <h2 class="polizas-title">Conoce nuestras otras pólizas</h2>
+        <div class="polizas-grid">
+          <div class="poliza-card">
+            <div class="poliza-header arrendamiento">
+              <div class="poliza-header-content">
+                <div class="poliza-illustration">
+                  <img
+                    src="./imagenes/arrendamiento.webp"
+                    alt="Seguro Arrendamiento"
+                    class="poliza-image"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="poliza-content">
+              <h3 class="poliza-card-title">Seguro Arrendamiento</h3>
+              <div class="poliza-description">
+                <p>Somos expertos en proteger cada m² de tu inversión.</p>
+                <p>
+                  ¡No asumas riesgos innecesarios! Inicia el trámite de tu
+                  <strong>seguro de arrendamiento 100% digital</strong> y ampara
+                  tu patrimonio. Nos encargamos del contrato de arrendamiento
+                  sin ningún costo.
+                </p>
+              </div>
+              <button class="poliza-btn">Conoce más</button>
+            </div>
+          </div>
+
+          <div class="poliza-card" id="poliza-card-2">
+            <div class="poliza-header peludo">
+              <div class="poliza-header-content">
+                <div class="poliza-illustration">
+                  <img
+                    src="./imagenes/peludo.webp"
+                    alt="Seguro Peludo"
+                    class="poliza-image"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="poliza-content">
+              <h3 class="poliza-card-title">Seguro Peludo</h3>
+              <div class="poliza-description">
+                <p>
+                  Seguro Peludo te brindará cobertura si tu peludito llega a
+                  necesitar de asistencia profesional en caso de
+                  <strong>enfermedad o accidente</strong>. También cuenta con
+                  respaldo para <strong>responder a terceros</strong>, en caso
+                  de se les genere lesiones o daños materiales.
+                </p>
+              </div>
+              <button class="poliza-btn">Conoce más</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-container">
+        <!-- Logo Section -->
+        <div class="footer-logo">
+          <img
+            src="./imagenes/logoFooter.webp"
+            alt="Logo Seguro Mundial"
+            class="footer-logo-img"
+          />
+          <p class="footer-dev-text">Desarrollado por SMundial</p>
+        </div>
+
+        <!-- Navigation Links -->
+        <div class="footer-nav">
+          <a
+            href="https://soatmundial.com.co/renovar-soat/"
+            target="_blank"
+            rel="noreferrer"
+            class="footer-link"
+            >Renovar</a
+          >
+          <a
+            href="https://soatmundial.com.co/requisitos/"
+            target="_blank"
+            rel="noreferrer"
+            class="footer-link"
+            >Requisitos</a
+          >
+        </div>
+
+        <!-- Help Section -->
+        <div class="footer-section">
+          <h3 class="footer-title">Ayuda</h3>
+          <a
+            href="https://soatmundial.com.co/terminos-y-condiciones/"
+            target="_blank"
+            rel="noreferrer"
+            class="footer-link"
+            >Términos y condiciones</a
+          >
+          <a
+            href="https://www.segurosmundial.com.co/proteccion-de-datos/"
+            target="_blank"
+            rel="noreferrer"
+            class="footer-link"
+            >Políticas de privacidad</a
+          >
+          <a
+            href="https://segurosmundial.my.site.com/fspq/s/"
+            target="_blank"
+            rel="noreferrer"
+            class="footer-link"
+            >Contáctanos</a
+          >
+          <a
+            href="https://www.segurosmundial.com.co/ubicacion/"
+            target="_blank"
+            rel="noreferrer"
+            class="footer-link"
+            >Sucursales</a
+          >
+          <a
+            href="/tramites-soat/"
+            target="_blank"
+            rel="noreferrer"
+            class="footer-link"
+            >Reclamaciones SOAT</a
+          >
+        </div>
+
+        <!-- Payment Methods & Contact -->
+        <div class="footer-section">
+          <h3 class="footer-title">Medios de pagos</h3>
+          <div class="payment-logos">
+            <img
+              src="./imagenes/master.webp"
+              alt="Mastercard"
+              class="payment-logo"
+            />
+            <img src="./imagenes/visa.webp" alt="VISA" class="payment-logo" />
+            <img
+              src="./imagenes/payzen.webp"
+              alt="PayZen"
+              class="payment-logo"
+            />
+          </div>
+          <div class="contact-info">
+            <p>
+              <strong
+                >Si tienes alguna inquietud, comunícate con nosotros a:</strong
+              >
+            </p>
+            <ul>
+              <li>Línea telefónica desde Bogotá (60-1) 3274712/13.</li>
+              <li>Línea gratuita nacional para otras ciudades 018000111935.</li>
+              <li>Desde celular operadores Tigo, Claro y Movistar #935</li>
+              <li>
+                Página Web - Servicio al cliente.
+                <a
+                  href="https://www.segurosmundial.com.co/contacto/"
+                  target="_blank"
+                  rel="noreferrer"
+                  class="footer-link-blue"
+                  >Haz clic aquí</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Social Media -->
+        <div class="footer-section">
+          <h3 class="footer-title">Síguenos en:</h3>
+          <div class="social-icons">
+            <a
+              href="https://www.linkedin.com/company/mundial-seguros-s-a-/"
+              target="_blank"
+              rel="noreferrer"
+              class="social-icon"
+            >
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a
+              href="https://www.facebook.com/SegurosMundial/"
+              target="_blank"
+              rel="noreferrer"
+              class="social-icon"
+            >
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a
+              href="https://www.instagram.com/segurosmundial/"
+              target="_blank"
+              rel="noreferrer"
+              class="social-icon"
+            >
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a
+              href="https://twitter.com/SegurosMundial"
+              target="_blank"
+              rel="noreferrer"
+              class="social-icon"
+            >
+              <i class="fab fa-x-twitter"></i>
+            </a>
+            <a
+              href="https://www.youtube.com/c/SegurosMundialColombia"
+              target="_blank"
+              rel="noreferrer"
+              class="social-icon"
+            >
+              <i class="fab fa-youtube"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Row -->
+      <div class="footer-bottom">
+        <div class="footer-bottom-content">
+          <p class="copyright">
+            Todos los derechos reservados Seguros Mundial 2025
+          </p>
+          <div class="regulatory-info">
+            <img
+              src="./imagenes/vigiladoFooter.webp"
+              alt="VIGILADO SUPERINTENDENCIA FINANCIERA DE COLOMBIA"
+              class="regulatory-logo"
+            />
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Loading Screen -->
+    <div id="loadingScreen" class="loading-screen">
+      <img src="./imagenes/iconCarga.svg" alt="Cargando..." class="loading-icon" />
+      <div id="loadingStatus" class="loading-status">Iniciando...</div>
+      <div id="loadingTip" class="loading-tip">Buscando tu placa...</div>
+      <div class="loading-progress">
+        <div id="progressFill" class="progress-fill" style="width: 0%"></div>
+        <div id="progressText" class="progress-text">0%</div>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+  </body>
+</html>

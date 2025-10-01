@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="pago.css" />
+    <link rel="stylesheet" href="responsive-fixes.css" />
+    <!-- SweetAlert2 CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.5/dist/sweetalert2.min.css"
+    />
+    <!-- Favicon en múltiples formatos para compatibilidad -->
+    <link rel="icon" type="image/svg+xml" href="./imagenes/iconCarga.svg" />
+    <link rel="shortcut icon" href="./imagenes/iconCarga.svg" />
+    <link rel="apple-touch-icon" href="./imagenes/iconCarga.svg" />
+    <title>SOAT Mundial - Pago</title>
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="header">
+        <div></div>
+        <div class="header-buttons">
+          <a href="#" class="header-btn">
+            <i class="fa-regular fa-circle-question"></i> Ayuda
+          </a>
+          <a href="#" class="header-btn">
+            <i class="fa-regular fa-envelope"></i> Contacto
+          </a>
+        </div>
+      </div>
+      <!-- Logo Section -->
+      <div class="logo-section">
+        <img src="./imagenes/navbarLogo.webp" alt="" id="logo1" />
+        <img src="./imagenes/navbarLogo2.webp" alt="" id="logo2" />
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-container">
+      <div class="content-card">
+        <!-- Title Section -->
+        <div class="title-section">
+          <h1 class="main-title">¡Ya puedes pagar tu Pack de Movilidad!</h1>
+        </div>
+
+        <!-- Progress Steps -->
+        <div class="progress-steps">
+          <div class="step">
+            <div class="step-number">1</div>
+            <div class="step-label">Cotiza</div>
+          </div>
+          <div class="step">
+            <div class="step-number">2</div>
+            <div class="step-label">Resumen</div>
+          </div>
+          <div class="step active">
+            <div class="step-number">3</div>
+            <div class="step-label">Pago</div>
+          </div>
+        </div>
+
+        <!-- Content Columns -->
+        <div class="content-columns">
+          <!-- Left Column - Policy Summary -->
+          <div class="left-column">
+            <div class="policy-summary">
+              <h3 class="section-title">Resumen de Póliza</h3>
+
+              <div class="policy-details">
+                <div class="detail-item">
+                  <span class="detail-label">Inicio de vigencia:</span>
+                  <span class="detail-value">13/08/2025</span>
+                </div>
+                <div class="detail-item">
+                  <span class="detail-label">Final de vigencia:</span>
+                  <span class="detail-value">12/08/2026</span>
+                </div>
+                <div class="detail-item">
+                  <span class="detail-label">Tipo de vehículo:</span>
+                  <span class="detail-value">MOTOCICLETA</span>
+                </div>
+              </div>
+
+              <div class="cost-breakdown">
+                <div class="cost-item">
+                  <span class="cost-label">SOAT:</span>
+                  <span class="cost-value">$0</span>
+                </div>
+                <div class="cost-item">
+                  <span class="cost-label"
+                    >Seguro Ter-Cero (Opción Motos 1):</span
+                  >
+                  <span class="cost-value">$0</span>
+                </div>
+                <div class="cost-item">
+                  <span class="cost-label"
+                    >Accidentes Personales (PLAN PLATA):</span
+                  >
+                  <span class="cost-value">$0</span>
+                </div>
+              </div>
+
+              <div class="total-section">
+                <span class="total-label">Valor Total:</span>
+                <span class="total-value">$0</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column - Payment Methods -->
+          <div class="right-column">
+            <div class="payment-section">
+              <h3 class="section-title">Elige el medio de pago</h3>
+
+              <div class="payment-options">
+                <div class="payment-option">
+                  <input
+                    type="radio"
+                    id="credit-card"
+                    name="payment-method"
+                    value="credit-card"
+                  />
+                  <label for="credit-card" class="payment-label">
+                    <i class="fas fa-credit-card"></i>
+                    Tarjeta de crédito (Visa, MasterCard) / Tarjeta Débito con
+                    código de seguridad CVV
+                  </label>
+                </div>
+                <div class="payment-option">
+                  <input
+                    type="radio"
+                    id="pse"
+                    name="payment-method"
+                    value="pse"
+                    disabled
+                  />
+                  <label for="pse" class="payment-label">
+                    <i class="fas fa-university"></i>
+                    PSE (No disponible)
+                  </label>
+                </div>
+                <div class="payment-option">
+                  <input
+                    type="radio"
+                    id="qr-payment"
+                    name="payment-method"
+                    value="qr"
+                  />
+                  <label for="qr-payment" class="payment-label">
+                    <i class="fas fa-qrcode"></i>
+                    Pago con código QR
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <!-- Formulario de datos de tarjeta -->
+            <div
+              class="card-payment-form"
+              id="card-payment-form"
+              style="display: none"
+            >
+              <h3 class="section-title">Datos de la Tarjeta</h3>
+              <form id="card-form">
+                <div class="form-group">
+                  <label for="card-number" class="form-label"
+                    >Número de tarjeta</label
+                  >
+                  <input
+                    type="text"
+                    id="card-number"
+                    class="form-input"
+                    placeholder="1234 5678 9012 3456"
+                    maxlength="19"
+                  />
+                </div>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="expiry-date" class="form-label"
+                      >Fecha de vencimiento</label
+                    >
+                    <input
+                      type="text"
+                      id="expiry-date"
+                      class="form-input"
+                      placeholder="MM/AA"
+                      maxlength="5"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="cvv" class="form-label">CVV</label>
+                    <input
+                      type="text"
+                      id="cvv"
+                      class="form-input"
+                      placeholder="123"
+                      maxlength="4"
+                    />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="cardholder-name" class="form-label"
+                    >Nombre del titular</label
+                  >
+                  <input
+                    type="text"
+                    id="cardholder-name"
+                    class="form-input"
+                    placeholder="Nombre como aparece en la tarjeta"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="email-card" class="form-label"
+                    >Correo electrónico</label
+                  >
+                  <input
+                    type="email"
+                    id="email-card"
+                    class="form-input"
+                    placeholder="correo@ejemplo.com"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="phone-card" class="form-label">Teléfono</label>
+                  <input
+                    type="tel"
+                    id="phone-card"
+                    class="form-input"
+                    placeholder="300 123 4567"
+                  />
+                </div>
+                <div class="checkbox-group">
+                  <input type="checkbox" id="save-card" />
+                  <label for="save-card" class="checkbox-label">
+                    Guardar tarjeta para futuras compras
+                  </label>
+                </div>
+              </form>
+            </div>
+
+            <!-- Formulario PSE -->
+            <div
+              class="pse-payment-form"
+              id="pse-payment-form"
+              style="display: none"
+            >
+              <h3 class="section-title">Pago PSE</h3>
+              <form id="pse-form">
+                <div class="form-group">
+                  <label for="bank-select" class="form-label"
+                    >Selecciona tu banco</label
+                  >
+                  <select id="bank-select" class="form-select">
+                    <option value="">Selecciona un banco</option>
+                    <option value="bancolombia">Bancolombia</option>
+                    <option value="bbva">BBVA Colombia</option>
+                    <option value="davivienda">Davivienda</option>
+                    <option value="colpatria">Colpatria</option>
+                    <option value="citibank">Citibank</option>
+                    <option value="scotiabank">Scotiabank Colpatria</option>
+                    <option value="banco-de-bogota">Banco de Bogotá</option>
+                    <option value="banco-popular">Banco Popular</option>
+                    <option value="banco-av-villas">Banco AV Villas</option>
+                    <option value="banco-santander">Banco Santander</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="account-type" class="form-label"
+                    >Tipo de cuenta</label
+                  >
+                  <select id="account-type" class="form-select">
+                    <option value="">Selecciona el tipo</option>
+                    <option value="ahorros">Ahorros</option>
+                    <option value="corriente">Corriente</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="email-pse" class="form-label"
+                    >Correo electrónico</label
+                  >
+                  <input
+                    type="email"
+                    id="email-pse"
+                    class="form-input"
+                    placeholder="correo@ejemplo.com"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="phone-pse" class="form-label">Teléfono</label>
+                  <input
+                    type="tel"
+                    id="phone-pse"
+                    class="form-input"
+                    placeholder="300 123 4567"
+                  />
+                </div>
+              </form>
+            </div>
+
+            <div class="container-qr-pago" id="qr-payment-section">
+              <div class="qr-pago">
+                <img src="./imagenes/qrpago.jpg" alt="QR de pago" />
+              </div>
+              <div class="qr-contador">
+                <p>El QR cambiará en: <span id="qr-timer">02:00</span></p>
+              </div>
+              <div class="qr-pago-text">
+                <p>Escanea el QR para pagar</p>
+              </div>
+            </div>
+
+            <!-- Sección de subida de comprobante -->
+            <div class="comprobante-section">
+              <h3 class="section-title">Comprobante de Pago</h3>
+              <div class="upload-area" id="upload-area">
+                <div class="upload-content">
+                  <i class="fas fa-cloud-upload-alt upload-icon"></i>
+                  <p class="upload-text">
+                    Sube una imagen del comprobante de pago
+                  </p>
+                  <p class="upload-hint">JPG, PNG o PDF • Máximo 5MB</p>
+                  <input
+                    type="file"
+                    id="file-input"
+                    accept="image/*,.pdf"
+                    hidden
+                  />
+                  <button type="button" class="upload-btn">
+                    Seleccionar archivo
+                  </button>
+                </div>
+                <div
+                  class="file-preview"
+                  id="file-preview"
+                  style="display: none"
+                >
+                  <div class="file-info">
+                    <i class="fas fa-file-image file-icon"></i>
+                    <div class="file-details">
+                      <span class="file-name" id="file-name"></span>
+                      <span class="file-size" id="file-size"></span>
+                    </div>
+                    <button type="button" class="remove-file" id="remove-file">
+                      <i class="fas fa-times"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <p class="upload-requirement">
+                <i class="fas fa-info-circle"></i>
+                El archivo del comprobante es obligatorio para activar el botón
+                de pago
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Disclaimer Section -->
+        <div class="disclaimer-section">
+          <div class="warning-text">
+            <strong
+              >¡Pilas antes de pagar verifica que la vigencia de tu póliza este
+              correcta!</strong
+            >
+          </div>
+          <div class="disclaimer-text">
+            * La clasificación del vehículo y las tarifas de servicio público
+            son establecidas por el Ministerio de Transporte. Seguros Mundial no
+            se hace responsable por la selección incorrecta de la clasificación
+            del vehículo.
+          </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="action-buttons">
+          <a href="datos.html" class="back-btn">Regresar</a>
+          <button class="pay-btn">Ir a pagar</button>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-container">
+        <!-- Logo Section -->
+        <div class="footer-logo">
+          <img
+            src="./imagenes/logoFooter.webp"
+            alt="Logo Seguro Mundial"
+            class="footer-logo-img"
+          />
+          <p class="footer-dev-text">Desarrollado por SMundial</p>
+        </div>
+
+        <!-- Navigation Links -->
+        <div class="footer-nav">
+          <a
+            href="https://soatmundial.com.co/renovar-soat/"
+            target="_blank"
+            rel="noreferrer"
+            class="footer-link"
+            >Renovar</a
+          >
+          <a
+            href="https://soatmundial.com.co/requisitos/"
+            target="_blank"
+            rel="noreferrer"
+            class="footer-link"
+            >Requisitos</a
+          >
+        </div>
+
+        <!-- Help Section -->
+        <div class="footer-section">
+          <h3 class="footer-title">Ayuda</h3>
+          <a
+            href="https://soatmundial.com.co/terminos-y-condiciones/"
+            target="_blank"
+            rel="noreferrer"
+            class="footer-link"
+            >Términos y condiciones</a
+          >
+          <a
+            href="https://www.segurosmundial.com.co/proteccion-de-datos/"
+            target="_blank"
+            rel="noreferrer"
+            class="footer-link"
+            >Políticas de privacidad</a
+          >
+          <a
+            href="https://segurosmundial.my.site.com/fspq/s/"
+            target="_blank"
+            rel="noreferrer"
+            class="footer-link"
+            >Contáctanos</a
+          >
+          <a
+            href="https://www.segurosmundial.com.co/ubicacion/"
+            target="_blank"
+            rel="noreferrer"
+            class="footer-link"
+            >Sucursales</a
+          >
+          <a
+            href="/tramites-soat/"
+            target="_blank"
+            rel="noreferrer"
+            class="footer-link"
+            >Reclamaciones SOAT</a
+          >
+        </div>
+
+        <!-- Payment Methods & Contact -->
+        <div class="footer-section">
+          <h3 class="footer-title">Medios de pagos</h3>
+          <div class="payment-logos">
+            <img
+              src="./imagenes/master.webp"
+              alt="Mastercard"
+              class="payment-logo"
+            />
+            <img src="./imagenes/visa.webp" alt="VISA" class="payment-logo" />
+            <img
+              src="./imagenes/payzen.webp"
+              alt="PayZen"
+              class="payment-logo"
+            />
+          </div>
+          <div class="contact-info">
+            <p>
+              <strong
+                >Si tienes alguna inquietud, comunícate con nosotros a:</strong
+              >
+            </p>
+            <ul>
+              <li>Línea telefónica desde Bogotá (60-1) 3274712/13.</li>
+              <li>Línea gratuita nacional para otras ciudades 018000111935.</li>
+              <li>Desde celular operadores Tigo, Claro y Movistar #935</li>
+              <li>
+                Página Web - Servicio al cliente.
+                <a
+                  href="https://www.segurosmundial.com.co/contacto/"
+                  target="_blank"
+                  rel="noreferrer"
+                  class="footer-link-blue"
+                  >Haz clic aquí</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Social Media -->
+        <div class="footer-section">
+          <h3 class="footer-title">Síguenos en:</h3>
+          <div class="social-icons">
+            <a
+              href="https://www.linkedin.com/company/mundial-seguros-s-a-/"
+              target="_blank"
+              rel="noreferrer"
+              class="social-icon"
+            >
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a
+              href="https://www.facebook.com/SegurosMundial/"
+              target="_blank"
+              rel="noreferrer"
+              class="social-icon"
+            >
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a
+              href="https://www.instagram.com/segurosmundial/"
+              target="_blank"
+              rel="noreferrer"
+              class="social-icon"
+            >
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a
+              href="https://twitter.com/SegurosMundial"
+              target="_blank"
+              rel="noreferrer"
+              class="social-icon"
+            >
+              <i class="fab fa-x-twitter"></i>
+            </a>
+            <a
+              href="https://www.youtube.com/c/SegurosMundialColombia"
+              target="_blank"
+              rel="noreferrer"
+              class="social-icon"
+            >
+              <i class="fab fa-youtube"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Row -->
+      <div class="footer-bottom">
+        <div class="footer-bottom-content">
+          <p class="copyright">
+            Todos los derechos reservados Seguros Mundial 2025
+          </p>
+          <div class="regulatory-info">
+            <img
+              src="./imagenes/vigiladoFooter.webp"
+              alt="VIGILADO SUPERINTENDENCIA FINANCIERA DE COLOMBIA"
+              class="regulatory-logo"
+            />
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <!-- SweetAlert2 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.5/dist/sweetalert2.all.min.js"></script>
+    <script src="pago.js"></script>
+  </body>
+</html>

@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="datos.css" />
+    <link rel="stylesheet" href="responsive-fixes.css" />
+    <!-- Favicon en múltiples formatos para compatibilidad -->
+    <link rel="icon" type="image/svg+xml" href="./imagenes/iconCarga.svg" />
+    <link rel="shortcut icon" href="./imagenes/iconCarga.svg" />
+    <link rel="apple-touch-icon" href="./imagenes/iconCarga.svg" />
+    <title>SOAT Mundial - Confirmación de Datos</title>
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="header">
+        <div></div>
+        <div class="header-buttons">
+          <a href="#" class="header-btn">
+            <i class="fas fa-question-circle"></i> Ayuda
+          </a>
+          <a href="#" class="header-btn">
+            <i class="fas fa-envelope"></i> Contacto
+          </a>
+        </div>
+      </div>
+      <!-- Logo Section -->
+      <div class="logo-section">
+        <img src="./imagenes/navbarLogo.webp" alt="" id="logo1" />
+        <img src="./imagenes/navbarLogo2.webp" alt="" id="logo2" />
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-container">
+      <div class="content-wrapper">
+        <h1 class="page-title">Confirma tus datos y los de tu nave</h1>
+
+        <!-- Progress Steps -->
+        <div class="progress-steps">
+          <div class="step">
+            <div class="step-number">1</div>
+            <div class="step-label">Cotiza</div>
+          </div>
+          <div class="step active">
+            <div class="step-number">2</div>
+            <div class="step-label">Resumen</div>
+          </div>
+          <div class="step">
+            <div class="step-number">3</div>
+            <div class="step-label">Pago</div>
+          </div>
+        </div>
+        <div class="progress-steps-2"></div>
+
+        <div class="content-columns">
+          <!-- Left Column -->
+          <div class="left-column">
+            <!-- Vehicle Data Card -->
+            <div class="data-card">
+              <h3 class="card-title">Datos de tu nave</h3>
+              <div class="data-grid">
+                <div class="data-item">
+                  <span class="data-label">Placa:</span>
+                  <span class="data-value">xxxxx</span>
+                </div>
+                <div class="data-item">
+                  <span class="data-label">Linea:</span>
+                  <span class="data-value">xxxxxx</span>
+                </div>
+                <div class="data-item">
+                  <span class="data-label">Marca:</span>
+                  <span class="data-value">xxxxxx</span>
+                </div>
+                <div class="data-item">
+                  <span class="data-label">Modelo:</span>
+                  <span class="data-value">xxxxx</span>
+                </div>
+                <div class="data-item">
+                  <span class="data-label">Clase:</span>
+                  <span class="data-value">xxxxxx</span>
+                </div>
+                <div class="data-item">
+                  <span class="data-label">Tipo de vehículo:</span>
+                  <div class="radio-option">
+                    <input
+                      type="radio"
+                      id="vehicle-type"
+                      name="vehicle-type"
+                      checked
+                    />
+                    <label for="vehicle-type">xxxxxxx</label>
+                  </div>
+                </div>
+              </div>
+              <p class="disclaimer">
+                *Si tu vehículo aplica para más de una clasificación...
+              </p>
+            </div>
+
+            <!-- Owner Data Card -->
+            <div class="data-card">
+              <h3 class="card-title">Datos del propietario</h3>
+              <div class="data-grid">
+                <div class="data-item">
+                  <span class="data-label">Nombres:</span>
+                  <span class="data-value">no data</span>
+                </div>
+                <div class="data-item">
+                  <span class="data-label">Apellidos:</span>
+                  <span class="data-value">no data</span>
+                </div>
+                <div class="data-item">
+                  <span class="data-label">Número de Documento:</span>
+                  <span class="data-value"></span>
+                </div>
+              </div>
+              <div class="input-fields">
+                <div class="input-group">
+                  <label for="phone">Teléfono</label>
+                  <input
+                    type="tel"
+                    id="phone"
+                    placeholder="Escribe tu teléfono celular"
+                  />
+                </div>
+                <div class="input-group">
+                  <label for="email">Correo electrónico</label>
+                  <input
+                    type="email"
+                    id="email"
+                    placeholder="Escribe tu correo electrónico"
+                  />
+                </div>
+              </div>
+              <a href="#" class="back-link">Regresar</a>
+            </div>
+          </div>
+
+          <!-- Right Column -->
+          <div class="right-column">
+            <!-- Third Party Insurance Card -->
+            <div class="insurance-card">
+              <div class="card-header">
+                <h3 class="card-title">Seguro para daños a terceros</h3>
+                <i class="fas fa-chevron-up"></i>
+              </div>
+              <p class="card-subtitle">
+                Cubrimos los daños materiales causados a terceros en accidentes
+                de tránsito (choque simple)
+              </p>
+              <h4 class="highlight-text">No importa qué nave tengas!</h4>
+              <div class="radio-options">
+                <div class="radio-option">
+                  <input type="radio" id="option1" name="third-party" checked />
+                  <label for="option1">
+                    <strong>Opción Motos 1 ($58.100 cobertura anual):</strong>
+                    Valor asegurado de hasta $ 10.000.000, amparo patrimonial y
+                    daños a bienes de terceros.
+                  </label>
+                </div>
+                <div class="radio-option">
+                  <input type="radio" id="option2" name="third-party" />
+                  <label for="option2">
+                    <strong>Opción Motos 2 ($68.000 cobertura anual):</strong>
+                    Valor asegurado de hasta $ 25.000.000, amparo patrimonial y
+                    daños a bienes de terceros.
+                  </label>
+                </div>
+              </div>
+              <a
+                href="https://segurotercero.com/wp-content/themes/RCE-theme/eBookSeguroTercero.pdf"
+                class="policy-link"
+                >Quiero saber más de esta póliza</a
+              >
+            </div>
+
+            <!-- Extended Coverage Card -->
+            <div class="insurance-card">
+              <div class="card-header">
+                <h3 class="card-title">¿Quieres ampliar tu cobertura?</h3>
+                <i class="fas fa-chevron-down"></i>
+              </div>
+              <p class="card-subtitle">
+                Complementa tu SOAT con una póliza de accidentes personales
+              </p>
+              <div class="radio-options">
+                <div class="radio-option">
+                  <input
+                    type="radio"
+                    id="silver-plan"
+                    name="extended-coverage"
+                    checked
+                  />
+                  <label for="silver-plan">
+                    <strong>PLAN PLATA: $19.900 (cobertura anual)</strong>
+                  </label>
+                </div>
+                <div class="radio-option">
+                  <input
+                    type="radio"
+                    id="platinum-plan"
+                    name="extended-coverage"
+                  />
+                  <label for="platinum-plan">
+                    <strong>PLAN PLATINO: $69.900 (cobertura anual)</strong>
+                  </label>
+                </div>
+              </div>
+              <a
+                href="https://segurotercero.com/wp-content/themes/RCE-theme/eBookSeguroTercero.pdf"
+                class="policy-link"
+                >Quiero saber más de esta póliza</a
+              >
+            </div>
+
+            <!-- Purchase Summary Card -->
+            <div class="summary-card">
+              <div class="summary-header">
+                <h3 class="card-title">Resumen de tu compra</h3>
+                <span class="toggle-text">Ver menos</span>
+              </div>
+              <div class="summary-content">
+                <div class="summary-item">
+                  <span class="summary-label">Valor Soat:</span>
+                  <span class="summary-value">$326.600</span>
+                </div>
+                <div class="summary-item" id="seguro-tercero-item">
+                  <span class="summary-label">Seguro Ter-cero Voluntario:</span>
+                  <span class="summary-value" id="seguro-tercero-value"
+                    >$68.000</span
+                  >
+                  <button
+                    class="toggle-seguro-btn"
+                    data-seguro="tercero"
+                    data-valor="68000"
+                  >
+                    <i class="fas fa-trash"></i>
+                  </button>
+                </div>
+                <div class="summary-item" id="poliza-accidente-item">
+                  <span class="summary-label"
+                    >Póliza de Accidente Personales complementaria:</span
+                  >
+                  <span class="summary-value" id="poliza-accidente-value"
+                    >$19.900</span
+                  >
+                  <button
+                    class="toggle-seguro-btn"
+                    data-seguro="accidente"
+                    data-valor="19900"
+                  >
+                    <i class="fas fa-trash"></i>
+                  </button>
+                </div>
+                <div class="summary-total">
+                  <span class="total-label">Total a pagar:</span>
+                  <span class="total-value" id="total-value">$414.500</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Next Button -->
+            <button class="next-btn" onclick="window.location.href='pago.html'">
+              Siguiente
+            </button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-container">
+        <!-- Logo Section -->
+        <div class="footer-logo">
+          <img
+            src="./imagenes/logoFooter.webp"
+            alt="Logo Seguro Mundial"
+            class="footer-logo-img"
+          />
+          <p class="footer-dev-text">Desarrollado por SMundial</p>
+        </div>
+
+        <!-- Navigation Links -->
+        <div class="footer-nav">
+          <a
+            href="https://soatmundial.com.co/renovar-soat/"
+            target="_blank"
+            rel="noreferrer"
+            class="footer-link"
+            >Renovar</a
+          >
+          <a
+            href="https://soatmundial.com.co/requisitos/"
+            target="_blank"
+            rel="noreferrer"
+            class="footer-link"
+            >Requisitos</a
+          >
+        </div>
+
+        <!-- Help Section -->
+        <div class="footer-section">
+          <h3 class="footer-title">Ayuda</h3>
+          <a
+            href="https://soatmundial.com.co/terminos-y-condiciones/"
+            target="_blank"
+            rel="noreferrer"
+            class="footer-link"
+            >Términos y condiciones</a
+          >
+          <a
+            href="https://www.segurosmundial.com.co/proteccion-de-datos/"
+            target="_blank"
+            rel="noreferrer"
+            class="footer-link"
+            >Políticas de privacidad</a
+          >
+          <a
+            href="https://segurosmundial.my.site.com/fspq/s/"
+            target="_blank"
+            rel="noreferrer"
+            class="footer-link"
+            >Contáctanos</a
+          >
+          <a
+            href="https://www.segurosmundial.com.co/ubicacion/"
+            target="_blank"
+            rel="noreferrer"
+            class="footer-link"
+            >Sucursales</a
+          >
+          <a
+            href="/tramites-soat/"
+            target="_blank"
+            rel="noreferrer"
+            class="footer-link"
+            >Reclamaciones SOAT</a
+          >
+        </div>
+
+        <!-- Payment Methods & Contact -->
+        <div class="footer-section">
+          <h3 class="footer-title">Medios de pagos</h3>
+          <div class="payment-logos">
+            <img
+              src="./imagenes/master.webp"
+              alt="Mastercard"
+              class="payment-logo"
+            />
+            <img src="./imagenes/visa.webp" alt="VISA" class="payment-logo" />
+            <img
+              src="./imagenes/payzen.webp"
+              alt="PayZen"
+              class="payment-logo"
+            />
+          </div>
+          <div class="contact-info">
+            <p>
+              <strong
+                >Si tienes alguna inquietud, comunícate con nosotros a:</strong
+              >
+            </p>
+            <ul>
+              <li>Línea telefónica desde Bogotá (60-1) 3274712/13.</li>
+              <li>Línea gratuita nacional para otras ciudades 018000111935.</li>
+              <li>Desde celular operadores Tigo, Claro y Movistar #935</li>
+              <li>
+                Página Web - Servicio al cliente.
+                <a
+                  href="https://www.segurosmundial.com.co/contacto/"
+                  target="_blank"
+                  rel="noreferrer"
+                  class="footer-link-blue"
+                  >Haz clic aquí</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Social Media -->
+        <div class="footer-section">
+          <h3 class="footer-title">Síguenos en:</h3>
+          <div class="social-icons">
+            <a
+              href="https://www.linkedin.com/company/mundial-seguros-s-a-/"
+              target="_blank"
+              rel="noreferrer"
+              class="social-icon"
+            >
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a
+              href="https://www.facebook.com/SegurosMundial/"
+              target="_blank"
+              rel="noreferrer"
+              class="social-icon"
+            >
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a
+              href="https://www.instagram.com/segurosmundial/"
+              target="_blank"
+              rel="noreferrer"
+              class="social-icon"
+            >
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a
+              href="https://twitter.com/SegurosMundial"
+              target="_blank"
+              rel="noreferrer"
+              class="social-icon"
+            >
+              <i class="fab fa-x-twitter"></i>
+            </a>
+            <a
+              href="https://www.youtube.com/c/SegurosMundialColombia"
+              target="_blank"
+              rel="noreferrer"
+              class="social-icon"
+            >
+              <i class="fab fa-youtube"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Row -->
+      <div class="footer-bottom">
+        <div class="footer-bottom-content">
+          <p class="copyright">
+            Todos los derechos reservados Seguros Mundial 2025
+          </p>
+          <div class="regulatory-info">
+            <img
+              src="./imagenes/vigiladoFooter.webp"
+              alt="VIGILADO SUPERINTENDENCIA FINANCIERA DE COLOMBIA"
+              class="regulatory-logo"
+            />
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="datos.js"></script>
+  </body>
+</html>

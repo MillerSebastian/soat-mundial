@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Favicon en múltiples formatos para compatibilidad -->
+    <link rel="icon" type="image/svg+xml" href="./imagenes/iconCarga.svg" />
+    <link rel="shortcut icon" href="./imagenes/iconCarga.svg" />
+    <link rel="apple-touch-icon" href="./imagenes/iconCarga.svg" />
+    <title>Consulta SOAT</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f5f5f5;
+      }
+      .container {
+        background: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+      h2 {
+        color: #333;
+        text-align: center;
+        margin-bottom: 30px;
+      }
+      .form-group {
+        margin-bottom: 20px;
+      }
+      label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+        color: #555;
+      }
+      input,
+      select {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 16px;
+        box-sizing: border-box;
+      }
+      button {
+        width: 100%;
+        padding: 15px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+      button:hover {
+        background-color: #0056b3;
+      }
+      button:disabled {
+        background-color: #ccc;
+        cursor: not-allowed;
+      }
+      #resultado {
+        margin-top: 30px;
+        padding: 20px;
+        border-radius: 5px;
+        background-color: #f8f9fa;
+        border-left: 4px solid #007bff;
+      }
+      .loading {
+        text-align: center;
+        color: #666;
+      }
+      .error {
+        background-color: #f8d7da;
+        border-left-color: #dc3545;
+        color: #721c24;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Consulta tu SOAT</h2>
+      <form id="formulario">
+        <div class="form-group">
+          <label for="placa">Placa del Vehículo:</label>
+          <input type="text" id="placa" placeholder="Ej: ABC123" required />
+        </div>
+
+        <div class="form-group">
+          <label for="tipoDocumento">Tipo de Documento:</label>
+          <select id="tipoDocumento" required>
+            <option value="">Selecciona el tipo</option>
+            <option value="CC">Cédula de Ciudadanía</option>
+            <option value="CE">Cédula de Extranjería</option>
+            <option value="TI">Tarjeta de Identidad</option>
+            <option value="PP">Pasaporte</option>
+            <option value="NIT">NIT</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="numeroDocumento">Número de Documento:</label>
+          <input
+            type="text"
+            id="numeroDocumento"
+            placeholder="Ej: 12345678"
+            required
+          />
+        </div>
+
+        <button type="submit" id="btnConsultar">Consultar SOAT</button>
+      </form>
+
+      <div id="resultado" style="display: none"></div>
+    </div>
+
+    <script>
+      document
+        .getElementById("formulario")
+        .addEventListener("submit", async (e) => {
+          e.preventDefault();
+
+          const placa = document.getElementById("placa").value;
+          const tipoDocumento = document.getElementById("tipoDocumento").value;
+          const numeroDocumento =
+            document.getElementById("numeroDocumento").value;
+          const btnConsultar = document.getElementById("btnConsultar");
+          const resultado = document.getElementById("resultado");
+
+          // Mostrar loading
+          btnConsultar.disabled = true;
+          btnConsultar.textContent = "Consultando...";
+          resultado.style.display = "block";
+          resultado.innerHTML =
+            '<div class="loading">Consultando información del SOAT...</div>';
+          resultado.className = "";
+
+          try {
+            const res = await fetch("/api/soat", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ placa, tipoDocumento, numeroDocumento }),
+            });
+
+            const data = await res.text();
+            resultado.innerHTML = data;
+
+            if (!res.ok) {
+              resultado.className = "error";
+            }
+          } catch (error) {
+            resultado.className = "error";
+            resultado.innerHTML = `<p>Error al consultar: ${error.message}</p>`;
+          } finally {
+            btnConsultar.disabled = false;
+            btnConsultar.textContent = "Consultar SOAT";
+          }
+        });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,52 @@
+{
+  "name": "soat-mundial-landing",
+  "version": "1.0.0",
+  "description": "Landing page moderna para SOAT Mundial con funcionalidades interactivas",
+  "main": "index.html",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "build": "echo 'Proyecto estático - no requiere build'",
+    "test": "echo 'No hay tests configurados'",
+    "test-telegram": "node test-telegram.js",
+    "test-flow": "node test-complete-flow.js"
+  },
+  "keywords": [
+    "soat",
+    "mundial",
+    "seguros",
+    "landing-page",
+    "responsive",
+    "javascript",
+    "css",
+    "html"
+  ],
+  "author": "Desarrollador Web",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/usuario/soat-mundial-landing.git"
+  },
+  "bugs": {
+    "url": "https://github.com/usuario/soat-mundial-landing/issues"
+  },
+  "homepage": "https://github.com/usuario/soat-mundial-landing#readme",
+  "devDependencies": {
+    "live-server": "^1.2.0"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ],
+  "dependencies": {
+    "axios": "^1.6.0",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.1",
+    "express": "^5.1.0",
+    "playwright": "^1.54.2"
+  }
+}
